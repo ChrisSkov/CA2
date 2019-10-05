@@ -21,7 +21,7 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQuery(name = "Person.deleteAllRows", query = "DELETE from Person")
 public class Person implements Serializable {
-//TODO ADD cascading to relations
+//TODO ADD relations
 //TODO ADD proper constructor and more getters and setter
 
     private static final long serialVersionUID = 1L;
@@ -32,8 +32,7 @@ public class Person implements Serializable {
     private String firstName;
     private String lastName;
     
-    @ManyToOne
-    private Address address;
+
     
 
 
@@ -67,28 +66,7 @@ public class Person implements Serializable {
         this.lastName = lastName;
     }
 
-    public Address getAddress()
-    {
-        return address;
-    }
-
-    public void setAddress(Address address)
-    {
-        this.address = address;
-    }
-
-    public Hobby getHobby()
-    {
-        return hobby;
-    }
-
-    public void setHobby(Hobby hobby)
-    {
-        this.hobby = hobby;
-    }
-
-    @ManyToMany
-    private Hobby hobby;
+  
 
     public Integer getId()
     {
