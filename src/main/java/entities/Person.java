@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -36,8 +35,7 @@ public class Person implements Serializable {
     @ManyToOne
     private Address address;
     
-    @OneToMany
-    private Phone phone;
+
 
     public String geteMail()
     {
@@ -77,16 +75,6 @@ public class Person implements Serializable {
     public void setAddress(Address address)
     {
         this.address = address;
-    }
-
-    public Phone getPhone()
-    {
-        return phone;
-    }
-
-    public void setPhone(Phone phone)
-    {
-        this.phone = phone;
     }
 
     public Hobby getHobby()
