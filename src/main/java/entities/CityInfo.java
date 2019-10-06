@@ -20,14 +20,36 @@ import javax.persistence.OneToMany;
 @Entity
 public class CityInfo implements Serializable {
 //TODO ADD RELATIONS WITH OTHER CLASSES
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private int zipCode;
     private String city;
+
     @OneToMany(mappedBy = "cityInfo")
     private List<Address> addresss;
+
+    public CityInfo()
+    {
+    }
+
+    public List<Address> getAddresss()
+    {
+        return addresss;
+    }
+
+    public CityInfo(int zipCode, String city)
+    {
+        this.zipCode = zipCode;
+        this.city = city;
+    }
+
+    public void setAddresss(List<Address> addresss)
+    {
+        this.addresss = addresss;
+    }
 
     public int getZipCode()
     {
@@ -47,10 +69,6 @@ public class CityInfo implements Serializable {
     public void setCity(String city)
     {
         this.city = city;
-    }
-
-    public CityInfo()
-    {
     }
 
     public Integer getId()
@@ -92,5 +110,5 @@ public class CityInfo implements Serializable {
     {
         return "entities.CityInfo[ id=" + id + " ]";
     }
-    
+
 }

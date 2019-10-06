@@ -6,10 +6,13 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -25,11 +28,27 @@ public class Hobby implements Serializable {
     private Integer id;
     private String name;
     private String description;
+    @ManyToMany(mappedBy = "hobbies")
+    private List<Person> persons = new ArrayList<>();
 
     public Hobby(String name, String description)
     {
         this.name = name;
         this.description = description;
+    }
+
+    public Hobby()
+    {
+    }
+
+    public List<Person> getPersons()
+    {
+        return persons;
+    }
+
+    public void setPerson(Person person)
+    {
+        this.persons.add(person);
     }
 
     public Integer getId()
@@ -40,10 +59,6 @@ public class Hobby implements Serializable {
     public void setId(Integer id)
     {
         this.id = id;
-    }
-
-    public Hobby()
-    {
     }
 
     public String getName()
