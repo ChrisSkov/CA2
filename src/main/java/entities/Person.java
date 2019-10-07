@@ -43,6 +43,9 @@ public class Person implements Serializable {
     @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Hobby> hobbies = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "person")
+    private List<Phone> phones = new ArrayList<>();
+
     public Address getAddress() {
         return address;
     }
@@ -66,9 +69,6 @@ public class Person implements Serializable {
     public void setPhones(List<Phone> phones) {
         this.phones = phones;
     }
-
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "person")
-    private List<Phone> phones = new ArrayList<>();
 
     public String geteMail() {
         return eMail;
