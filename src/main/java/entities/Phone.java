@@ -6,6 +6,7 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,7 @@ public class Phone implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
     private int number;
     private String description;
     @ManyToOne
@@ -70,44 +71,53 @@ public class Phone implements Serializable {
         this.description = description;
     }
 
-    public Integer getId()
+    public int getId()
     {
         return id;
     }
 
-    public void setId(Integer id)
+    public void setId(int id)
     {
         this.id = id;
     }
 
     @Override
-    public int hashCode()
-    {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + this.id;
+        hash = 37 * hash + this.number;
+        hash = 37 * hash + Objects.hashCode(this.description);
+        hash = 37 * hash + Objects.hashCode(this.person);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object)
-    {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Phone))
-        {
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
         }
-        Phone other = (Phone) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)))
-        {
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Phone other = (Phone) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        if (this.number != other.number) {
+            return false;
+        }
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        if (!Objects.equals(this.person, other.person)) {
             return false;
         }
         return true;
     }
 
-    @Override
-    public String toString()
-    {
-        return "entities.Phone[ id=" + id + " ]";
-    }
+
 
 }
