@@ -45,6 +45,10 @@ public class Person implements Serializable {
 
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "person")
     private List<Phone> phones = new ArrayList<>();
+    
+    public Person () {
+        
+    }
 
     public Person(String eMail, String firstName, String lastName, Address address)
     {
