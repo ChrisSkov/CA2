@@ -58,6 +58,9 @@ public class Person implements Serializable {
         this.address = address;
     }
 
+    public Person() {
+    }
+
     public Address getAddress()
     {
         return address;
