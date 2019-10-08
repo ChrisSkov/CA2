@@ -34,6 +34,10 @@ public class PersonResource {
         return "{\"msg\":\"Hello World\"}";
     }
 
-
+//Get all persons with a given hobby
+//Get all persons living in a given city (i.e. 2800 Lyngby)
+//Get the count of people with a given hobby
+//Get a list of all zip codes in Denmark
+//Create a Person (with hobbies, phone, address etc.)
  
 }
