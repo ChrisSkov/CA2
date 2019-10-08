@@ -20,14 +20,10 @@ public class MakeTestData {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("pu");
         EntityManager em = emf.createEntityManager();
         try {
-<<<<<<< HEAD
-            Address a = new Address("hah", "akndj");
-            Person p1 = new Person("had", "ahjbsjdh", "adk", a); 
-=======
+
             Address a = new Address("greve", "10");
             Person p1 = new Person("Jabs@gmail.com", "jabs", "jabr", a); 
             
->>>>>>> 02b550d7138fd789aabdeea461ec89bc07e60f62
             em.getTransaction().begin(); //begin transaction
             em.persist(p1);
             em.getTransaction().commit(); //commit transactions
