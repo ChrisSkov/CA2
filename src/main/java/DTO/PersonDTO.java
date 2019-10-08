@@ -63,4 +63,9 @@ public class PersonDTO {
         this.hobbies = hobbies;
     }
 
+    @Override
+    public String toString() {
+        return "PersonDTO{" + "name=" + name + ", email=" + email + ", address=" + address + ", phones=" + phones + ", hobbies=" + hobbies + '}';
+    }
+
 }
