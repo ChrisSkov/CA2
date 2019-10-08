@@ -43,67 +43,90 @@ public class Person implements Serializable {
     @ManyToMany(cascade = CascadeType.PERSIST)
     private List<Hobby> hobbies = new ArrayList<>();
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public List<Hobby> getHobbies() {
-        return hobbies;
-    }
-
-    public void setHobbies(List<Hobby> hobbies) {
-        this.hobbies = hobbies;
-    }
-
-    public List<Phone> getPhones() {
-        return phones;
-    }
-
-    public void setPhones(List<Phone> phones) {
-        this.phones = phones;
-    }
-
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "person")
     private List<Phone> phones = new ArrayList<>();
 
-    public String geteMail() {
+    public Person(String eMail, String firstName, String lastName, Address address)
+    {
+        this.eMail = eMail;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+    }
+
+    public Address getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(Address address)
+    {
+        this.address = address;
+    }
+
+    public List<Hobby> getHobbies()
+    {
+        return hobbies;
+    }
+
+    public void setHobbies(List<Hobby> hobbies)
+    {
+        this.hobbies = hobbies;
+    }
+
+    public List<Phone> getPhones()
+    {
+        return phones;
+    }
+
+    public void setPhones(List<Phone> phones)
+    {
+        this.phones = phones;
+    }
+
+    public String geteMail()
+    {
         return eMail;
     }
 
-    public void seteMail(String eMail) {
+    public void seteMail(String eMail)
+    {
         this.eMail = eMail;
     }
 
-    public String getFirstName() {
+    public String getFirstName()
+    {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName)
+    {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public String getLastName()
+    {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(String lastName)
+    {
         this.lastName = lastName;
     }
 
-    public int getId() {
+    public int getId()
+    {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int hash = 3;
         hash = 29 * hash + this.id;
         hash = 29 * hash + Objects.hashCode(this.eMail);
@@ -116,41 +139,50 @@ public class Person implements Serializable {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+        {
             return true;
         }
-        if (obj == null) {
+        if (obj == null)
+        {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass())
+        {
             return false;
         }
         final Person other = (Person) obj;
-        if (this.id != other.id) {
+        if (this.id != other.id)
+        {
             return false;
         }
-        if (!Objects.equals(this.eMail, other.eMail)) {
+        if (!Objects.equals(this.eMail, other.eMail))
+        {
             return false;
         }
-        if (!Objects.equals(this.firstName, other.firstName)) {
+        if (!Objects.equals(this.firstName, other.firstName))
+        {
             return false;
         }
-        if (!Objects.equals(this.lastName, other.lastName)) {
+        if (!Objects.equals(this.lastName, other.lastName))
+        {
             return false;
         }
-        if (!Objects.equals(this.address, other.address)) {
+        if (!Objects.equals(this.address, other.address))
+        {
             return false;
         }
-        if (!Objects.equals(this.hobbies, other.hobbies)) {
+        if (!Objects.equals(this.hobbies, other.hobbies))
+        {
             return false;
         }
-        if (!Objects.equals(this.phones, other.phones)) {
+        if (!Objects.equals(this.phones, other.phones))
+        {
             return false;
         }
         return true;
     }
-
-
 
 }
