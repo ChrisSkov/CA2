@@ -12,5 +12,62 @@ and open the template in the editor.
     </head>
     <body>
         
+        
+Method
+URL
+Request Body (JSON)
+Response (JSON)
+Error (e)
+GET	
+/api/users
+
+
+[user, user, ...](1)
+
+
+GET	
+/api/users/{id}   
+Id: A user ID            
+
+
+user (1)
+(e1)
+POST
+/api/users
+user (1) without id
+
+
+(e2)
+
+
+
+
+
+
+
+
+
+
+ 
+Request Body and Response Formats
+(1) User format (don’t provide ID, for POST
+ {
+    "id": Number,
+    "age": Number,
+    "name": String,
+    "gender": String [“male” | “Female”],
+    "email": String (email)
+  }
+Errors
+(e) All errors are reported using this format (with the HTTP-status code matching the number)
+{ status : statusCode, "msg": "Explains the problem" }
+
+(e1) :{ status : 404, "msg": "No content found for this request" }
+(e2) :{ status : 400, "msg": "Field ‘xxx’ is required" } (for example, no name provided)
+
+
+        
+        
+        
     </body>
 </html>
