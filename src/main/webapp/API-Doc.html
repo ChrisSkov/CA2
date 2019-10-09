@@ -9,65 +9,99 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+</style>
     </head>
     <body>
         
+        <h2>Table Caption</h2>
+<p>Hej.</p>
+
+<table style="width:100%">
+  <caption>Person</caption>
+  <tr>
+    <th>Method</th>
+    <th>URL</th>
+    <th>Request Body (JSON)</th>
+    <th>Response (JSON)</th>
+    <th>Error (e)</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+  </tr>
+  <tr>
+    <td>February</td>
+    <td>$50</td>
+  </tr>
+</table>
         
-Method
-URL
-Request Body (JSON)
-Response (JSON)
-Error (e)
-GET	
-/api/users
+<table style="width:100%">
+  <caption>Adress</caption>
+  <tr>
+    <th>Method</th>
+    <th>URL</th>
+    <th>Request Body (JSON)</th>
+    <th>Response (JSON)</th>
+    <th>Error (e)</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+  </tr>
+  <tr>
+    <td>February</td>
+    <td>$50</td>
+  </tr>
+</table>
+
+<table style="width:100%">
+  <caption>Hobby</caption>
+  <tr>
+    <th>Method</th>
+    <th>URL</th>
+    <th>Request Body (JSON)</th>
+    <th>Response (JSON)</th>
+    <th>Error (e)</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+  </tr>
+  <tr>
+    <td>February</td>
+    <td>$50</td>
+  </tr>
+</table>
+
+<table style="width:100%">
+  <caption>Phone</caption>
+  <tr>
+    <th>Method</th>
+    <th>URL</th>
+    <th>Request Body (JSON)</th>
+    <th>Response (JSON)</th>
+    <th>Error (e)</th>
+  </tr>
+  <tr>
+    <td>January</td>
+    <td>$100</td>
+  </tr>
+  <tr>
+    <td>February</td>
+    <td>$50</td>
+  </tr>
+</table>
 
 
-[user, user, ...](1)
-
-
-GET	
-/api/users/{id}   
-Id: A user ID            
-
-
-user (1)
-(e1)
-POST
-/api/users
-user (1) without id
-
-
-(e2)
-
-
-
-
-
-
-
-
-
-
- 
-Request Body and Response Formats
-(1) User format (don’t provide ID, for POST
- {
-    "id": Number,
-    "age": Number,
-    "name": String,
-    "gender": String [“male” | “Female”],
-    "email": String (email)
-  }
-Errors
-(e) All errors are reported using this format (with the HTTP-status code matching the number)
-{ status : statusCode, "msg": "Explains the problem" }
-
-(e1) :{ status : 404, "msg": "No content found for this request" }
-(e2) :{ status : 400, "msg": "Field ‘xxx’ is required" } (for example, no name provided)
-
-
-        
-        
-        
     </body>
 </html>
