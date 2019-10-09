@@ -2,9 +2,11 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import entities.Person;
 import entities.RenameMe;
 import utils.EMF_Creator;
 import facades.PersonFacade;
+import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -33,11 +35,21 @@ public class PersonResource {
     public String demo() {
         return "{\"msg\":\"Hello World\"}";
     }
-
+    
+//
+//     @Path("/all{Hobby}")
+//    @GET
+//    @Produces({MediaType.APPLICATION_JSON})
+//    public String getPersonByHobby(@PathParam("Hobby") String hobby) throws Exception {
+//
+//    }
+}
+    
+    
 //Get all persons with a given hobby
 //Get all persons living in a given city (i.e. 2800 Lyngby)
 //Get the count of people with a given hobby
 //Get a list of all zip codes in Denmark
 //Create a Person (with hobbies, phone, address etc.)
  
-}
+
