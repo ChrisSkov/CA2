@@ -112,6 +112,16 @@ public class PersonFacadeTest {
         
     }
     
+    @Test 
+    public void testGetPersonByHobby() {
+        try { 
+            Person p = facade.getPersonByHobby("Gaming");
+            assertEquals(p.getFirstName(), "jabs");
+        } catch (Exception ex) {
+            Logger.getLogger(PersonFacadeTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     @AfterEach
     public void tearDown() {
 //       Remove any data after each test was run
