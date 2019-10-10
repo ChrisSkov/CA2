@@ -115,7 +115,7 @@ public class PersonFacadeTest {
     @Test 
     public void testGetPersonByHobby() {
         try { 
-            Person p = facade.getPersonByHobby("Gaming");
+            Person p = (Person) facade.getPersonByHobby("Gaming");
             assertEquals(p.getFirstName(), "jabs");
         } catch (Exception ex) {
             Logger.getLogger(PersonFacadeTest.class.getName()).log(Level.SEVERE, null, ex);
