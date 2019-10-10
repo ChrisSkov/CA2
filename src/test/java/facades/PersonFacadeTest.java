@@ -90,6 +90,16 @@ public class PersonFacadeTest {
             Logger.getLogger(PersonFacadeTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    @Test 
+    public void testGetPersonById() {
+        try { 
+            Person p = facade.getPersonById(1);
+            assertEquals(p.getFirstName(), "jabs");
+        } catch (Exception ex) {
+            Logger.getLogger(PersonFacadeTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @AfterEach
     public void tearDown() {
