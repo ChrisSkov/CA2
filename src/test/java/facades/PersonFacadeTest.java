@@ -6,6 +6,8 @@ import entities.Person;
 import utils.EMF_Creator;
 import entities.RenameMe;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import org.junit.jupiter.api.AfterAll;
@@ -60,18 +62,32 @@ public class PersonFacadeTest {
 
     // Setup the DataBase in a known state BEFORE EACH TEST
     //TODO -- Make sure to change the script below to use YOUR OWN entity class
-    @BeforeEach
-    public void setUp() {
-        EntityManager em = emf.createEntityManager();
+//    @BeforeEach
+//    public void setUp() {
+//        EntityManager em = emf.createEntityManager();
+//        try {
+//            em.getTransaction().begin();
+//            em.createNamedQuery("Person.deleteAllRows").executeUpdate();
+//            em.persist(new RenameMe("Some txt", "More text"));
+//            em.persist(new RenameMe("aaa", "bbb"));
+//
+//            em.getTransaction().commit();
+//        } finally {
+//            em.close();
+//        }
+//    }
+    
+     @Test
+    public void testGetPersonByFirstName() {
+        Address c = new Address("trane", "10");
+        Person per = new Person("jabs@gmail", "jabs", "jabr", c); 
         try {
-            em.getTransaction().begin();
-            em.createNamedQuery("Person.deleteAllRows").executeUpdate();
-            em.persist(new RenameMe("Some txt", "More text"));
-            em.persist(new RenameMe("aaa", "bbb"));
-
-            em.getTransaction().commit();
-        } finally {
-            em.close();
+            Person result = facade.getPersonByFirstName("jabs");
+            Person expected = per; 
+            assertEquals(expected, result);
+           
+        } catch (Exception ex) {
+            Logger.getLogger(PersonFacadeTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
