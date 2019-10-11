@@ -87,10 +87,10 @@ public class PersonFacade {
         }
     }
     
-    public Person getPersonByHobby(String name) throws Exception {
+    public  List<Person> getPersonByHobby(String name) throws Exception {
         EntityManager em = getEntityManager();
         try{
-            return em.createQuery("SELECT p FROM Person p JOIN p.hobbies h WHERE h.name = :name",Person.class).getSingleResult();
+            return (List<Person>) em.createQuery("SELECT p FROM Person p JOIN p.hobbies h WHERE h.name = :name",Person.class).getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception("None found with that hobby");

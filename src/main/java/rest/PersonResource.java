@@ -16,6 +16,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 //Todo Remove or change relevant parts before ACTUAL use
 @Path("person")
@@ -36,13 +37,16 @@ public class PersonResource {
         return "{\"msg\":\"Hello World\"}";
     }
     
-//
-//     @Path("/all{Hobby}")
-//    @GET
-//    @Produces({MediaType.APPLICATION_JSON})
-//    public String getPersonByHobby(@PathParam("Hobby") String hobby) throws Exception {
-//
-//    }
+
+@Path("/allPersonsHobby/{Hobby}")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String allPersonsHobby(@PathParam("Hobby") String hobby) throws Exception {
+
+        List<Person> hobbylist = (List<Person>) FACADE.getPersonByHobby(hobby);
+        return GSON.toJson(hobbylist);
+    }
+    
 }
     
     
