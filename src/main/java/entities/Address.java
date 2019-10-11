@@ -36,7 +36,7 @@ public class Address implements Serializable {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     private CityInfo cityInfo;
-
+   
     public List<Person> getPersons()
     {
         return persons;
@@ -139,6 +139,6 @@ public class Address implements Serializable {
         return true;
     }
 
-   
 
+    
 }

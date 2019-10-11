@@ -1,11 +1,13 @@
 package facades;
 
+import entities.CityInfo;
 import entities.Person;
 import entities.RenameMe;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -97,18 +99,60 @@ public class PersonFacade {
         }
     }
     
-//    public Person getAllPersonFromCity(String cityName) throws Exception {
-//        EntityManager em = getEntityManager();
-//        try {
-//            return em.createQuery("SELECT count(p) FROM Person p JOIN p.address a WHERE a.cityInfo = :cityInfo");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            throw new Exception("none from that city");
-//        }finally {
-//            em.close();
-//        }
-//    }
-//    
+    public Person getAllPersonFromCity(String cityName) throws Exception {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createQuery("SELECT p FROM Person p Where p.address = :address", Person.class).getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("none from that city");
+        }finally {
+            em.close();
+        }
+    }
     
-
+    public CityInfo getAllZips(int zipCode) throws Exception {
+        EntityManager em = getEntityManager();
+        try {
+            return em.createQuery("Select c FROM CityInfo c WHERE c.zipCode = :zipCode", CityInfo.class).getSingleResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new Exception("none from that city");
+        }finally {
+            em.close();
+        }
+    }
+    
+        public Person addPerson(Person person) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(person);
+            em.getTransaction().commit();
+            return person;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return person;
+    }
+        
+        public String deletePerson(int ID){
+            
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            Person person = em.find(Person.class, ID);
+            em.remove(person);
+            em.getTransaction().commit();
+            return "Removed person name: " + person.getId();
+        } catch (Exception ex) { // Thrown by em.commit()
+            throw new WebApplicationException("Database error when deleting person.", 500);
+        } finally {
+            em.close();
+        }
+    }
+            
+    
 }
