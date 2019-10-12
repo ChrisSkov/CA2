@@ -1,9 +1,9 @@
 package rest;
 
+import DTO.PersonDTO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import entities.Person;
-import entities.RenameMe;
 import utils.EMF_Creator;
 import facades.PersonFacade;
 import java.util.List;
@@ -11,7 +11,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -38,7 +37,7 @@ public class PersonResource {
     }
     
 
-@Path("/allPersonsHobby/{Hobby}")
+    @Path("/allPersonsHobby/{Hobby}")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String allPersonsHobby(@PathParam("Hobby") String hobby) throws Exception {
@@ -47,8 +46,21 @@ public class PersonResource {
         return GSON.toJson(hobbylist);
     }
     
-}
-    
+
+//
+//@POST
+//@Consumes({MediaType.APPLICATION_JSON})
+//@Produces({MediaType.APPLICATION_JSON})
+//public Response create(PersonDTO entity)
+//    {
+// TODO: add method body
+//
+//    }
+
+
+
+
+}//end of class
     
 //Get all persons with a given hobby
 //Get all persons living in a given city (i.e. 2800 Lyngby)
