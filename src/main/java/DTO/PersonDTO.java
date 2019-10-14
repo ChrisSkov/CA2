@@ -17,11 +17,24 @@ import java.util.List;
 public class PersonDTO {
     
     
-      private String name;
+    private String name;
     private String email;
     private String address;
     private List<PhoneDTO> phones;
     private List<HobbyDTO> hobbies;
+
+    public PersonDTO()
+    {
+    }
+
+    public PersonDTO(String name, String email, String address, List<PhoneDTO> phones, List<HobbyDTO> hobbies)
+    {
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.phones = phones;
+        this.hobbies = hobbies;
+    }
 
     public String getName() {
         return name;
