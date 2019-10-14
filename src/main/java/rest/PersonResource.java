@@ -47,15 +47,17 @@ public class PersonResource {
     }
     
 
-//
-//@POST
-//@Consumes({MediaType.APPLICATION_JSON})
-//@Produces({MediaType.APPLICATION_JSON})
-//public Response create(PersonDTO entity)
-//    {
-// TODO: add method body
-//
-//    }
+
+@POST
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
+public String create(Person entity)
+    {
+        Person newPerson = FACADE.addPerson(entity);
+        return GSON.toJson(newPerson);
+ //TODO: add method body
+
+    }
 
 
 
