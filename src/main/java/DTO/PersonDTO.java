@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DTO;
 
+import entities.Address;
+import entities.CityInfo;
 import entities.Hobby;
+import entities.Person;
 import entities.Phone;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,9 +16,13 @@ import java.util.List;
 public class PersonDTO {
     
     
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String address;
+    private String street;
+    private String additionalInfo;
+    private int zip;
+    private String city;
     private List<PhoneDTO> phones;
     private List<HobbyDTO> hobbies;
 
@@ -27,21 +30,34 @@ public class PersonDTO {
     {
     }
 
-    public PersonDTO(String name, String email, String address, List<PhoneDTO> phones, List<HobbyDTO> hobbies)
+    public PersonDTO(Person p, Address a, CityInfo c, List<PhoneDTO> ph, List<HobbyDTO>ho) 
     {
-        this.name = name;
-        this.email = email;
-        this.address = address;
-        this.phones = phones;
-        this.hobbies = hobbies;
+        this.firstName = p.getFirstName();
+        this.lastName = p.getLastName();
+        this.email = p.geteMail();
+        this.street = a.getStreet();
+        this.additionalInfo = a.getAdditionalInfo();
+        this.zip = c.getZipCode();
+        this.city = c.getCity();
+        this.phones = ph;
+        this.hobbies = ho;
+   
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -52,13 +68,38 @@ public class PersonDTO {
         this.email = email;
     }
 
-    public String getAddress() {
-        return address;
+    public String getStreet() {
+        return street;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setStreet(String street) {
+        this.street = street;
     }
+
+    public String getAdditionalInfo() {
+        return additionalInfo;
+    }
+
+    public void setAdditionalInfo(String additionalInfo) {
+        this.additionalInfo = additionalInfo;
+    }
+
+    public int getZip() {
+        return zip;
+    }
+
+    public void setZip(int zip) {
+        this.zip = zip;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
 
     public List<PhoneDTO> getPhones() {
         return phones;
@@ -78,7 +119,8 @@ public class PersonDTO {
 
     @Override
     public String toString() {
-        return "PersonDTO{" + "name=" + name + ", email=" + email + ", address=" + address + ", phones=" + phones + ", hobbies=" + hobbies + '}';
+        return "PersonDTO{" + "firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", street=" + street + ", additionalInfo=" + additionalInfo + ", zip=" + zip + ", city=" + city + ", phones=" + phones + ", hobbies=" + hobbies + '}';
     }
 
+   
 }

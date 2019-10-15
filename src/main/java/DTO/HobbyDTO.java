@@ -18,9 +18,32 @@ public class HobbyDTO {
     private String description;
 
     public HobbyDTO(Hobby h) {
-          this.name = h.getName();
+        this.name = h.getName();
         this.description = h.getDescription();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "HobbyDTO{" + "name=" + name + ", description=" + description + '}';
+    }
+    
+    
     
     
 }
