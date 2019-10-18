@@ -101,16 +101,16 @@ public class PersonFacadeTest {
         }
     }
 
-    @Test 
-    public void testGetPersonByPhoneNumber() {
-        try { 
-            Person p = facade.getPersonByPhoneNumber(22334477);
-            assertEquals(p.getFirstName(), "jabs"); 
-        } catch (Exception ex) {
-            Logger.getLogger(PersonFacadeTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
+//    @Test 
+//    public void testGetPersonByPhoneNumber() {
+//        try { 
+//            Person p = facade.getPersonByPhoneNumber(22334477);
+//            assertEquals(p.getFirstName(), "jabs"); 
+//        } catch (Exception ex) {
+//            Logger.getLogger(PersonFacadeTest.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
+//    }
     
     @Test 
     public void testGetPersonByHobby() {

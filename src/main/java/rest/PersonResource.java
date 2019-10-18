@@ -41,7 +41,7 @@ public class PersonResource {
     @Produces({MediaType.APPLICATION_JSON})
     public String allPersonsHobby(@PathParam("Hobby") String hobby) throws Exception {
 
-        List<Person> hobbylist = (List<Person>) FACADE.getPersonByHobby(hobby);
+        List<PersonDTO> hobbylist = FACADE.getPersonByHobby(hobby);
         return GSON.toJson(hobbylist);
     }
     

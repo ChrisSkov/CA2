@@ -14,8 +14,8 @@ import java.util.logging.Logger;
  * @author stoff
  */
 public class PersonDTO {
-    
-    
+
+    private int id;
     private String firstName;
     private String lastName;
     private String email;
@@ -26,12 +26,10 @@ public class PersonDTO {
     private List<PhoneDTO> phones;
     private List<HobbyDTO> hobbies;
 
-    public PersonDTO()
-    {
+    public PersonDTO() {
     }
 
-    public PersonDTO(Person p, Address a, CityInfo c, List<PhoneDTO> ph, List<HobbyDTO>ho) 
-    {
+    public PersonDTO(Person p, Address a, CityInfo c, List<PhoneDTO> ph, List<HobbyDTO> ho) {
         this.firstName = p.getFirstName();
         this.lastName = p.getLastName();
         this.email = p.geteMail();
@@ -41,7 +39,43 @@ public class PersonDTO {
         this.city = c.getCity();
         this.phones = ph;
         this.hobbies = ho;
-   
+    }
+
+    public PersonDTO(int id, String firstName, String lastName, String email, String street, String additionalInfo, int zip, String city, List<PhoneDTO> phones, List<HobbyDTO> hobbies) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.street = street;
+        this.additionalInfo = additionalInfo;
+        this.zip = zip;
+        this.city = city;
+        phones = phones;
+        hobbies = hobbies;
+    }
+
+       
+
+    public PersonDTO(Person person) {
+        this.id = person.getId();
+        this.firstName = person.getFirstName();
+        this.lastName = person.getLastName();
+        this.email = person.geteMail();
+        this.street = person.getAddress().getStreet();
+        this.additionalInfo = person.getAddress().getAdditionalInfo();
+        this.city = person.getAddress().getCityInfo().getCity();
+        this.zip = person.getAddress().getCityInfo().getZipCode();
+        List<HobbyDTO> hobs = new ArrayList();
+        for (Hobby hobby : person.getHobbies()) {
+            hobs.add(new HobbyDTO(hobby));
+        }
+        this.hobbies = hobs;
+        List<PhoneDTO> phons = new ArrayList();
+        for (Phone phone : person.getPhones()) {
+            phons.add(new PhoneDTO(phone));
+        }
+        this.phones = phons;
+  
     }
 
     public String getFirstName() {
@@ -100,7 +134,6 @@ public class PersonDTO {
         this.city = city;
     }
 
-
     public List<PhoneDTO> getPhones() {
         return phones;
     }
@@ -122,5 +155,4 @@ public class PersonDTO {
         return "PersonDTO{" + "firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", street=" + street + ", additionalInfo=" + additionalInfo + ", zip=" + zip + ", city=" + city + ", phones=" + phones + ", hobbies=" + hobbies + '}';
     }
 
-   
 }

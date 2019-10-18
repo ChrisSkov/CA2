@@ -1,10 +1,13 @@
 package facades;
 
+import DTO.PersonDTO;
 import entities.CityInfo;
 import entities.Person;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.WebApplicationException;
 
 /**
@@ -61,6 +64,20 @@ public class PersonFacade {
         }
     }
 
+    public List<PersonDTO> getAllPersons() {
+        EntityManager em = getEntityManager();
+        try {
+            List<PersonDTO> all = new ArrayList();
+            List<Person> persons = em.createQuery("SELECT p FROM Person p", Person.class).getResultList();
+            for (Person person : persons) {
+                all.add(new PersonDTO(person));
+            }
+            return all;
+        } finally {
+            em.close();
+        }
+    }
+
     public Person getPersonById(int Id) throws Exception {
         EntityManager em = getEntityManager();
         try {
@@ -72,56 +89,54 @@ public class PersonFacade {
             em.close();
         }
     }
-    
-    public Person getPersonByPhoneNumber(int phoneNumber) throws Exception {
+
+    public List<PersonDTO> getPersonByHobby(String Phobby) {
         EntityManager em = getEntityManager();
-        try {
-            return em.createQuery("SELECT p FROM Person p WHere p.phones = :phones", Person.class).getSingleResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("None found by that number");
+        try {   
+
+            TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p JOIN p.hobbies h WHERE h.name = :Phobby", Person.class);
+            query.setParameter("pHobby", Phobby);
+            List<Person> persons = query.getResultList();
+            List<PersonDTO> hobby = new ArrayList<>();
+
+            for (Person p : persons) {
+                hobby.add(new PersonDTO(p));
+            }
+            return hobby;
         } finally {
             em.close();
         }
     }
-    
-    public  List<Person> getPersonByHobby(String name) throws Exception {
+
+//    public CityInfo getAllZips(int zipCode) throws Exception {
+//        EntityManager em = getEntityManager();
+//        try {
+//            return em.createQuery("Select c FROM CityInfo c WHERE c.zipCode = :zipCode", CityInfo.class).getSingleResult();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            throw new Exception("none from that city");
+//        }finally {
+//            em.close();
+//        }
+//    }
+    public List<PersonDTO> findByZip(int zip) {
         EntityManager em = getEntityManager();
-        try{
-            return (List<Person>) em.createQuery("SELECT p FROM Person p JOIN p.hobbies h WHERE h.name = :name",Person.class).getSingleResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("None found with that hobby");
+
+        try {
+            TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p JOIN p.address.cityInfo c WHERE c.zipCode = :zipCode", Person.class);
+            query.setParameter("zipCode", zip);
+            List<Person> persons = query.getResultList();
+            List<PersonDTO> zipCode = new ArrayList<>();
+            for (Person p : persons) {
+                zipCode.add(new PersonDTO(p));
+            }
+            return zipCode;
         } finally {
             em.close();
         }
     }
-    
-    public Person getAllPersonFromCity(String cityName) throws Exception {
-        EntityManager em = getEntityManager();
-        try {
-            return em.createQuery("SELECT p FROM Person p Where p.address = :address", Person.class).getSingleResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("none from that city");
-        }finally {
-            em.close();
-        }
-    }
-    
-    public CityInfo getAllZips(int zipCode) throws Exception {
-        EntityManager em = getEntityManager();
-        try {
-            return em.createQuery("Select c FROM CityInfo c WHERE c.zipCode = :zipCode", CityInfo.class).getSingleResult();
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new Exception("none from that city");
-        }finally {
-            em.close();
-        }
-    }
-    
-        public Person addPerson(Person person) {
+
+    public Person addPerson(Person person) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -135,9 +150,9 @@ public class PersonFacade {
         }
         return person;
     }
-        
-        public String deletePerson(int ID){
-            
+
+    public String deletePerson(int ID) {
+
         EntityManager em = getEntityManager();
         try {
             em.getTransaction().begin();
@@ -151,6 +166,21 @@ public class PersonFacade {
             em.close();
         }
     }
-            
+
+    public PersonDTO editPerson(PersonDTO p, int id) {
+        EntityManager em = emf.createEntityManager();
+        
+        try {
+            Person person = em.find(Person.class, id);
+            person.setFirstName(p.getFirstName());
+            em.getTransaction().begin();
+            em.merge(person);
+            em.getTransaction().commit();
+            return new PersonDTO(person);
+        }finally {
+            em.close();
+        }
+
+    }
     
 }
