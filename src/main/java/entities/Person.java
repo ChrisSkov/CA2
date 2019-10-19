@@ -52,10 +52,19 @@ public class Person implements Serializable {
 
     public Person(String eMail, String firstName, String lastName, Address address)
     {
-        this.eMail = eMail;
+        seteMail(eMail);
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+    }
+    
+    public Person(String eMail, String firstName, String lastName, Address address, List<Hobby> hobbies, List<Phone> phones) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        seteMail(eMail);
+        setAddress(address);
+        setHobbies(hobbies);
+        setPhones(phones);
     }
 
 

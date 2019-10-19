@@ -15,6 +15,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 //Todo Remove or change relevant parts before ACTUAL use
 @Path("person")
@@ -22,11 +23,11 @@ public class PersonResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory(
                 "pu",
-                "jdbc:mysql://localhost:3307/Person",
+                "jdbc:mysql://localhost:3307/Persons",
                 "dev",
                 "ax2",
                 EMF_Creator.Strategy.CREATE);
-    private static final PersonFacade FACADE =  PersonFacade.getFacadeExample(EMF);
+    private static final PersonFacade FACADE =  PersonFacade.getPersonFacade(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
             
     @GET
@@ -35,29 +36,37 @@ public class PersonResource {
         return "{\"msg\":\"Hello World\"}";
     }
     
-
-    @Path("/allPersonsHobby/{Hobby}")
     @GET
+    @Path("/all")
     @Produces({MediaType.APPLICATION_JSON})
-    public String allPersonsHobby(@PathParam("Hobby") String hobby) throws Exception {
-
-        List<PersonDTO> hobbylist = FACADE.getPersonByHobby(hobby);
-        return GSON.toJson(hobbylist);
+    public Response getAll() {
+        return Response.ok().entity(GSON.toJson(FACADE.getAllPersons())).build();
     }
     
+    
 
-
-@POST
-@Path("/add")
-@Consumes({MediaType.APPLICATION_JSON})
-@Produces({MediaType.APPLICATION_JSON})
-public Person create(Person entity)
-    {
-        Person newPerson = FACADE.addPerson(entity);
-        return newPerson;
- //TODO: add method body
-
-    }
+//    @Path("/allPersonsHobby/{Hobby}")
+//    @GET
+//    @Produces({MediaType.APPLICATION_JSON})
+//    public String allPersonsHobby(@PathParam("Hobby") String hobby) throws Exception {
+//
+//        List<PersonDTO> hobbylist = FACADE.getPersonByHobby(hobby);
+//        return GSON.toJson(hobbylist);
+//    }
+//    
+//
+//
+//@POST
+//@Path("/add")
+//@Consumes({MediaType.APPLICATION_JSON})
+//@Produces({MediaType.APPLICATION_JSON})
+//public Person create(Person entity)
+//    {
+//        Person newPerson = FACADE.addPerson(entity);
+//        return newPerson;
+// //TODO: add method body
+//
+//    }
 
 
 

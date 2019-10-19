@@ -3,7 +3,6 @@
   <!-- DO NOT RENAME THE PERSISTENCE UNIT -->
   <persistence-unit name="pu" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>entities.RenameMe</class>
     <class>entities.Address</class>
     <class>entities.CityInfo</class>
     <class>entities.Hobby</class>
@@ -11,7 +10,7 @@
     <class>entities.Phone</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/Person"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3307/Persons"/>
       <property name="javax.persistence.jdbc.user" value="dev"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="ax2"/>
