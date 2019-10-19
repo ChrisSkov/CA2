@@ -56,17 +56,16 @@ public class PersonResource {
 //    
 //
 //
-//@POST
-//@Path("/add")
-//@Consumes({MediaType.APPLICATION_JSON})
-//@Produces({MediaType.APPLICATION_JSON})
-//public Person create(Person entity)
-//    {
-//        Person newPerson = FACADE.addPerson(entity);
-//        return newPerson;
-// //TODO: add method body
-//
-//    }
+@POST
+@Path("/add")
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
+public Person create(Person entity)
+    {
+        Person newPerson = FACADE.addPerson(entity);
+        return newPerson;
+
+    }
 
 
 
