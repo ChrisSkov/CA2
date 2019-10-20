@@ -43,6 +43,13 @@ public class PersonResource {
         return Response.ok().entity(GSON.toJson(FACADE.getAllPersons())).build();
     }
     
+     @GET
+    @Path("/allZips")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAllZips() {
+        return Response.ok().entity(GSON.toJson(FACADE.getAllZips())).build();
+    }
+    
     
 
 //    @Path("/allPersonsHobby/{Hobby}")
