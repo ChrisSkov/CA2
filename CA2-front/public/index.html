@@ -10,8 +10,13 @@
         <div class="container">
 
 
-            <h1 id="Header"> person-getter </h1>
-            <button id="getAllPersons">Get Person</button>
+            <form accept-charset="UTF-8" action="action_page.php" autocomplete="off" method="GET" target="_blank">
+                <label for="name">Name</label><br /> 
+                <input name="name" type="text" value="Frank" /> <br /> 
+                <textarea cols="30" rows="2">Long text.</textarea><br /> 
+                <input name="democheckbox" type="checkbox" value="1" /> Checkbox<br /> 
+                <button type="submit" value="Submit">Submit</button>
+            </form>
         </div>
         <script src="bundle.js"></script>
     </body>
