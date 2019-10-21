@@ -27,7 +27,7 @@ th, td {
 <p>Hej.</p>
 
 <table style="width:100%">
-  <caption>Person</caption>
+  <caption>API</caption>
   <tr>
     <th>Method</th>
     <th>URL</th>
@@ -39,8 +39,16 @@ th, td {
     <td>GET</td>
     <td>/person/all</td>
     <td>n/a</td>
+    <td>[user, user, ...](1)</td>
     <td>n/a</td>
+  </tr>
+  
+   <tr>
+    <td>GET</td>
+    <td>/api/users/{id} </td>
     <td>n/a</td>
+    <td>user (1)</td>
+    <td>(e1)</td>
   </tr>
   <tr>
      <td>PUT</td>
@@ -49,69 +57,34 @@ th, td {
     <td>n/a</td>
     <td>n/a</td>
   </tr>
+   <tr>
+     <td>Get</td>
+    <td>/allZips</td>
+    <td>n/a</td>
+    <td>n/a</td>
+    <td>n/a</td>
+  </tr>
+  
+     <tr>
+     <td>Post</td>
+    <td>/add</td>
+    <td>n/a</td>
+    <td>n/a</td>
+    <td>n/a</td>
+  </tr>
+  
+    <tr>
+     <td>Get</td>
+    <td>/allPersonsHobby/{Hobby}</td>
+    <td>n/a</td>
+    <td>n/a</td>
+    <td>n/a</td>
+  </tr>
+  
+  
 </table>
         
-<table style="width:100%">
-  <caption>Adress</caption>
-  <tr>
-    <th>Method</th>
-    <th>URL</th>
-    <th>Request Body (JSON)</th>
-    <th>Response (JSON)</th>
-    <th>Error (e)</th>
-  </tr>
-  <tr>
-    <td>GET</td>
-    <td>/address/all</td>
-    <td>n/a</td>
-    <td>n/a</td>
-    <td>n/a</td>
-  </tr>
-  <tr>
-    <td>POST</td>
-    <td>/address</td>
-    <td>n/a</td>
-    <td>n/a</td>
-    <td>n/a</td>
-  </tr>
-</table>
 
-<table style="width:100%">
-  <caption>Hobby</caption>
-  <tr>
-    <th>Method</th>
-    <th>URL</th>
-    <th>Request Body (JSON)</th>
-    <th>Response (JSON)</th>
-    <th>Error (e)</th>
-  </tr>
-  <tr>
-    <td>GET</td>
-    <td>/hobby/all</td>
-    <td>n/a</td>
-    <td>n/a</td>
-    <td>n/a</td>
-  </tr>
-</table>
-
-<table style="width:100%">
-  <caption>Phone</caption>
-  <tr>
-    <th>Method</th>
-    <th>URL</th>
-    <th>Request Body (JSON)</th>
-    <th>Response (JSON)</th>
-    <th>Error (e)</th>
-  </tr>
-  <tr>
-    <td>GET</td>
-    <td>/phone/all</td>
-    <td>n/a</td>
-    <td>n/a</td>
-    <td>n/a</td>
-  </tr>
- 
-</table>
 
 
     </body>

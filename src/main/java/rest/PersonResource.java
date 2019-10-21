@@ -57,22 +57,30 @@ public class PersonResource {
     
     
  
-//    @Path("/allPersonsHobby/{Hobby}")
-//    @GET
-//    @Produces({MediaType.APPLICATION_JSON})
-//    public String allPersonsHobby(@PathParam("Hobby") String hobby) throws Exception {
-//
-//        List<PersonDTO> hobbylist = FACADE.getPersonByHobby(hobby);
-//        return GSON.toJson(hobbylist);
-//    }
-//    
-//
-//
+    @Path("/allPersonsHobby/{Hobby}")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String allPersonsHobby(@PathParam("Hobby") String hobby) throws Exception {
+
+        List<PersonDTO> hobbylist = FACADE.getPersonByHobby(hobby);
+        return GSON.toJson(hobbylist);
+    }
+    
+
+
 @POST
 @Path("/add")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
+<<<<<<< HEAD
 public Person create(Person entity) {  
+=======
+public Response create(Person entity)
+    {
+   
+        return Response.ok().entity(GSON.toJson(FACADE.addPerson(entity))).build();
+
+>>>>>>> f9c5b50f92c831fa689716d27f324c2716e082b7
 
         Person newPerson = FACADE.addPerson(entity);
         return newPerson;     
