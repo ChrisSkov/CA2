@@ -72,7 +72,7 @@ public class PersonFacade {
             List<PersonDTO> all = new ArrayList();
             List<Person> persons = em.createQuery("SELECT p FROM Person p", Person.class).getResultList();
             for (Person person : persons) {
-                all.add(new PersonDTO(person));
+            all.add(new PersonDTO(person));
             }
             return all;
         } finally {
