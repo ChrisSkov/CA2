@@ -80,10 +80,11 @@ public class PersonResource {
 @Path("/add")
 @Consumes({MediaType.APPLICATION_JSON})
 @Produces({MediaType.APPLICATION_JSON})
-public Person create(Person entity)
+public Response create(Person entity)
     {
-        Person newPerson = FACADE.addPerson(entity);
-        return newPerson;
+   
+        return Response.ok().entity(GSON.toJson(FACADE.addPerson(entity))).build();
+
 
     }
 
