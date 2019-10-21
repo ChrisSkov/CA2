@@ -65,7 +65,7 @@ public class PersonResource {
     
     
  
-    @Path("/allPersonsHobby/{Hobby}")
+    @Path("/allPersonsHobby/Hobby")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
     public String allPersonsHobby(@PathParam("Hobby") String hobby) throws Exception {
