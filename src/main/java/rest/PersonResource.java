@@ -45,6 +45,13 @@ public class PersonResource {
         return GSON.toJson(FACADE.getAllPersons());
     }
     
+     @GET
+    @Path("/allZips")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAllZips() {
+        return Response.ok().entity(GSON.toJson(FACADE.getAllZips())).build();
+    }
+    
     
  
 //    @Path("/allPersonsHobby/{Hobby}")
@@ -58,17 +65,16 @@ public class PersonResource {
 //    
 //
 //
-//@POST
-//@Path("/add")
-//@Consumes({MediaType.APPLICATION_JSON})
-//@Produces({MediaType.APPLICATION_JSON})
-//public Person create(Person entity)
-//    {
-//        Person newPerson = FACADE.addPerson(entity);
-//        return newPerson;
-// //TODO: add method body
-//
-//    }
+@POST
+@Path("/add")
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
+public Person create(Person entity)
+    {
+        Person newPerson = FACADE.addPerson(entity);
+        return newPerson;
+
+    }
 
 
 

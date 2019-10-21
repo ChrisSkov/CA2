@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.WebApplicationException;
 
@@ -108,17 +109,18 @@ public class PersonFacade {
         }
     }
 
-//    public CityInfo getAllZips(int zipCode) throws Exception {
-//        EntityManager em = getEntityManager();
-//        try {
-//            return em.createQuery("Select c FROM CityInfo c WHERE c.zipCode = :zipCode", CityInfo.class).getSingleResult();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            throw new Exception("none from that city");
-//        }finally {
-//            em.close();
-//        }
-//    }
+   public List<CityInfo> getAllZips() {
+        EntityManager em = getEntityManager();
+        try {
+            Query query = em.createNamedQuery("CityInfo.getByZip");
+            List<CityInfo> results = query.getResultList();
+
+            return results;
+
+        } finally {
+            em.close();
+        }
+    }
     public List<PersonDTO> findByZip(int zip) {
         EntityManager em = getEntityManager();
 
@@ -182,5 +184,7 @@ public class PersonFacade {
         }
 
     }
-    
+
 }
+    
+
