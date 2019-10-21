@@ -65,17 +65,17 @@ public class PersonResource {
     
     
  
-//    @Path("/allPersonsHobby/{Hobby}")
-//    @GET
-//    @Produces({MediaType.APPLICATION_JSON})
-//    public String allPersonsHobby(@PathParam("Hobby") String hobby) throws Exception {
-//
-//        List<PersonDTO> hobbylist = FACADE.getPersonByHobby(hobby);
-//        return GSON.toJson(hobbylist);
-//    }
-//    
-//
-//
+    @Path("/allPersonsHobby/{Hobby}")
+    @GET
+    @Produces({MediaType.APPLICATION_JSON})
+    public String allPersonsHobby(@PathParam("Hobby") String hobby) throws Exception {
+
+        List<PersonDTO> hobbylist = FACADE.getPersonByHobby(hobby);
+        return GSON.toJson(hobbylist);
+    }
+    
+
+
 @POST
 @Path("/add")
 @Consumes({MediaType.APPLICATION_JSON})
