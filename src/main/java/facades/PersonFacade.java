@@ -1,6 +1,7 @@
 package facades;
 
 import DTO.PersonDTO;
+import Exception.PersonException;
 import entities.CityInfo;
 import entities.Person;
 import java.util.ArrayList;
@@ -169,19 +170,17 @@ public class PersonFacade {
         }
     }
 
-    public PersonDTO editPerson(PersonDTO p, int id) {
-        EntityManager em = emf.createEntityManager();
-        
-        try {
-            Person person = em.find(Person.class, id);
-            person.setFirstName(p.getFirstName());
+    public PersonDTO editPerson(Person p) throws PersonException {
+               EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
-            em.merge(person);
+            try{
+                em.merge(p);
+            } catch(Exception e){
+                throw new PersonException("not found");
+            }
             em.getTransaction().commit();
-            return new PersonDTO(person);
-        }finally {
             em.close();
-        }
+            return new PersonDTO(p);
 
     }
 

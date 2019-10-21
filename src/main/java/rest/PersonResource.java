@@ -1,6 +1,7 @@
 package rest;
 
 import DTO.PersonDTO;
+import Exception.PersonException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import entities.Person;
@@ -51,6 +52,16 @@ public class PersonResource {
     public Response getAllZips() {
         return Response.ok().entity(GSON.toJson(FACADE.getAllZips())).build();
     }
+    
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("{id}")
+    public String editPerson(Person person) throws PersonException {
+        PersonDTO editedPerson = FACADE.editPerson(person);
+        return GSON.toJson(editedPerson);
+    }
+
     
     
  
